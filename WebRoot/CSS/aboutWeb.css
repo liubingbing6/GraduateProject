@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+*{
+	margin:0;
+	padding:0;
+}
+.about{
+	width:1000px;
+	margin:10px auto;
+	font-size:14px;
+}
+.about .about_img{
+	width:1000px;
+	height:274px;
+	background: url(../Image/aboutweb.jpg) no-repeat center
+}
+.about .introduce{
+	font-size:28px;
+	text-align: center;
+	display:block;
+	padding:5px;
+}
+.about .about_text h5{
+	font-size:20px;
+	margin:12px 0;
+}
+.about_text p{
+	text-indent: 2em;
+	font-size:16px;
+	line-height:24px;
+}

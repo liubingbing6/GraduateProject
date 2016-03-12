@@ -1,0 +1,163 @@
+@CHARSET "UTF-8";
+*{
+	margin:0;
+	padding:0;
+}
+.land_logo{
+	width:1000px;
+	margin:0 auto;
+	position: relative;
+	height:80px;
+	background: url(../Image/land_logo.png) no-repeat left center;
+}
+.land_bg {
+	width:100%;
+	background:url(../Image/landed_bg.jpg) no-repeat left center;
+}
+.land_bg_main {
+	width: 1000px;
+	height: 523px;
+	margin: 0 auto;
+	background: url(../Image/landed_bg2.png) no-repeat left center;
+	position: relative;
+}
+.land_table {
+	position: absolute;
+	width: 300px;
+	height: 424px;
+	background: url(../Image/trans.png) repeat;
+	top:48px;
+	right:0;
+	border-radius: 10px;
+	overflow: hidden;
+}
+.land_table_top {
+	height: 54px;
+	color: #fff;
+	line-height: 54px;
+}
+.land_table_top span{
+	display:block;
+	float:left;
+	padding:0 5px;
+	width:140px;
+	text-align: center;
+	
+}
+.land_first_span {
+	background: #615a3e;
+}
+.land_table_top a{
+	text-decoration: none;
+	font-size: 18px;
+	color: #fff;
+}
+.land_table_top a:hover,.land_table_top a:active {
+	color: #ff9409
+}
+.land_form {
+	padding: 0 5px;
+}
+.land_form .userName {
+	background:url(../Image/input_logo.png) no-repeat 4px 12px;
+}
+.land_form .password {
+	background:url(../Image/input_logo.png) no-repeat 4px -18px;
+}
+.land_form .userName,.land_form .password {
+	height:40px;
+	border-radius: 6px;
+	width:68%;
+	margin: 8px auto;
+	text-indent: 2em;
+	background-color:#fff;
+	font-family:"微软雅黑";
+	border:1px solid #fff;
+}
+.land_form select{
+	height:28px;
+	width:197px;
+	display:inline-block;	
+}
+.land_checkbox {
+	margin-top:10px;
+}
+.land_checkbox {
+	font-size: 14px;
+}
+.land_checkbox .return {
+	color:#fff;
+	display:inline-block;
+	float:right;
+	margin-right:20px;
+	text-decoration: none;
+}
+.land_form .submit,.reset {
+	display:inline-block;
+	font-size:16px;
+	width:110px;
+	height:40px;
+	color: #fff;
+	background: #4dd02a;
+	border-radius:5px;
+	border:1px solid #39ac1a;
+	margin: 50px 0 0 20px;
+	cursor: pointer;
+}
+.land_other {
+	padding-top:10px;
+	font-size: 14px;
+	text-align: center;
+}
+.land_other a{
+	display:inline-block;
+	margin:20px 20px 0 14px;
+}
+/*land_form结束*/
+.regist_form {
+	padding: 5px;
+}
+.regist_form select {
+	width: 197px;
+	height: 26px;
+}
+/* .regist_form .userName {
+	background:url(../Image/input_logo.png) no-repeat 4px 4px;
+}
+.regist_form .password {
+	background:url(../Image/input_logo.png) no-repeat 4px -24px;
+} 
+.regist_form .userName,.regist_form .password {
+	height:26px;
+	border-radius: 6px;
+	width:68%;
+	margin: 6px auto;
+	 text-indent: 2em;
+	background-color: #fff;
+	font-family:"微软雅黑";
+	border:1px solid #fff;
+}
+*/
+.form_common{
+	height:26px;
+	border-radius: 6px;
+	width:68%;
+	text-indent: 0.3em;
+	margin: 6px auto;
+	background-color: #fff;
+	font-family:"微软雅黑";
+	border:1px solid #fff;
+}
+.regist_submit {
+	margin-top: 8px;
+	margin-left: 78px;
+	background-color: #ff9409;
+	border-radius: 5px;
+	border:1px solid #ee6500;
+	width:110px;
+	height:40px;
+	line-height: 40px;
+	font-size: 14px;
+	color: #fff;
+	cursor: pointer;
+}

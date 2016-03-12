@@ -1,0 +1,79 @@
+@CHARSET "UTF-8";
+*{
+	margin:0;
+	padding:0;
+}
+.floatLeft {
+	float: left;
+}
+.floatRight {
+	float: right;
+}
+.petNews {
+	float: left;
+}
+.petNews li {
+	list-style: none;
+	clear:both;
+	padding: 5px 0;
+}
+.petNews_img {
+	float:left;
+}
+.petNews_text {
+	float:left;
+	margin-left: 8px;
+	width: 292px;
+}
+.petNews_text a{
+	font-size:20px;
+	text-decoration:none;
+	color: #333;
+}
+.petNews_text a:hover{
+	color:#A1BC37;
+}
+.petNews_text p{
+	font-size: 14px;
+	line-height: 20px;
+    overflow:hidden; 	
+    height:100px;
+}
+
+.petNews_ad {
+	float:right;
+	width: 400px;
+	padding: 0 46px;
+	background: #fff;
+}
+.petNews_ad p{
+	writing-mode:vertical-rl;
+	font-size:64px;
+	margin-left: 123px;
+	text-align: center;
+}
+/*如下为页码制作*/
+.page {
+	height: 40px;
+	margin-top: 10px;
+	text-align: left;
+	clear:both;
+}
+.page a {
+	display: inline-block;
+	border: 1px solid #E8E8E8;
+	text-decoration: none;
+	margin: 5px;
+	padding: 5px 16px;
+}
+.page a:link, .page a:visited {
+	color: #000;
+}
+.page a:hover, .page a:active {
+	color: #FFF;
+	background-color: #cc1b1b;
+}
+.activeFirst {
+	background-color: #cc1b1b;
+	color: #FFF;
+}

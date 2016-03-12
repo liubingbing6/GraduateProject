@@ -1,0 +1,55 @@
+@CHARSET "UTF-8";
+*{
+	margin:0;
+	padding:0;
+}
+.askQues {
+	width:600px;
+	margin:0 auto;
+	border: 1px solid #9ACD32;
+	border-radius:10px;
+}
+.askQues_sub {
+	height:56px;
+	background: green;
+	line-height: 56px;
+	font-size:24px;
+	color:#fff;
+	text-align: center;
+	border-radius:8px 8px 0 0;
+}
+.askQues_sub input {
+	height:30px;
+	width: 70px;
+	border: transparent;
+	background: transparent;
+	font-size: 24px;
+	color:#fff;
+	margin-top:12px;
+	cursor: pointer;
+}
+.askQues_des input{
+	height: 56px;
+	font-size: 24px;
+	width:100%;
+	border: transparent;
+}
+.askQues_des textarea {
+	border:transparent;
+	font-size:22px;
+}
+.askQues_kind {
+	font-size:24px;
+}
+.askKind{
+	height: 56px;
+	font-size: 24px;
+	border: 1px solid #e8e8e8;
+	border-radius:8px;
+	width: 86%;
+}
+.askQues_kind select{
+	width:68px;
+	height:28px;
+	font-size:20px
+}
