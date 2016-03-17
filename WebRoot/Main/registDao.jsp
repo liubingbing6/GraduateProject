@@ -4,7 +4,11 @@
 <%@ page import="entity.Doctor" %>
 <jsp:useBean id="doctor" class="entity.Doctor"></jsp:useBean>
 <jsp:setProperty property="*" name="doctor"/>
-<jsp:useBean id="docDao" class="dao.DoctorDao"></jsp:useBean>
+<jsp:useBean id="hospital" class="entity.Hospital"></jsp:useBean>
+<jsp:setProperty property="*" name="hospital"/>
+<jsp:useBean id="petO" class="entity.PetOwner"></jsp:useBean>
+<jsp:setProperty property="*" name="petO"/>
+<jsp:useBean id="fnDao" class="dao.DoctorDao"></jsp:useBean>
 
 
 <%
@@ -14,20 +18,46 @@
 <%
 	//对注册进行处理
 	request.setCharacterEncoding("utf8");
-	//String kind_regist = request.getParameter("kind_regist");
+	String kind_regist = request.getParameter("kind_regist");
 	//out.println(docDao.addDoctorInfo(doctor));
-/*  	Doctor doc = new Doctor();
-	doc.setName(request.getParameter("name"));
-	doc.setPass(request.getParameter("pass"));
-	doc.setSex(request.getParameter("sex"));
-	doc.setAge(Integer.parseInt(request.getParameter("age")));
-	doc.setTel(request.getParameter("tel"));
-	doc.setEmail(request.getParameter("Email"));
-	doc.setQQ(request.getParameter("QQ")); */
-	 if(docDao.addDoctorInfo(doctor)){
-		out.println("<h2>记录添加成功！</h2>");
-		
-	}else{
-		out.println("<h2>记录添加失败！</h2>");
-	} 
+	if(kind_regist.equals("doctor")){
+		if(fnDao.addDoctorInfo(doctor)){
+			session.setAttribute("doctorName",doctor.getName());
+			response.sendRedirect("../Doctors/docIndex.jsp");	
+		}else{
+			out.println("<h2>医生记录添加失败！</h2>");
+			out.println(doctor.getName()+"<br/>");
+			out.println(doctor.getPass()+"<br/>");
+			out.println(doctor.getSex()+"<br/>");
+			out.println(doctor.getAge()+"<br/>");
+			out.println(doctor.getTel()+"<br/>");
+			out.println(doctor.getEmail()+"<br/>");
+			out.println(doctor.getQq()+"<br/>");
+		} 	
+	}else if(kind_regist.equals("hospital")){
+			if(fnDao.addHospitalInfo(hospital)){
+				session.setAttribute("hospitalName", hospital.getName());
+				response.sendRedirect("../Hospital/hosIndex.jsp");
+			}else{
+				out.println("<h2>医院记录添加失败！</h2>");
+				out.println(hospital.getName()+"<br/>");
+				out.println(hospital.getPass()+"<br/>");
+				out.println(hospital.getTel()+"<br/>");
+				out.println(hospital.getEmail()+"<br/>");
+			} 
+	}else if(kind_regist.equals("petOwner")){
+			if(fnDao.addPetOwnerInfo(petO)){
+				session.setAttribute("petOwnerName",petO.getName());
+				response.sendRedirect("../PetOwner/petIndex.jsp");
+			}else{
+				out.println("<h2>宠物主人记录添加失败！</h2>");
+				out.println(petO.getName()+"<br/>");
+				out.println(petO.getPass()+"<br/>");
+				out.println(petO.getSex()+"<br/>");
+				out.println(petO.getAge()+"<br/>");
+				out.println(petO.getTel()+"<br/>");
+				out.println(petO.getEmail()+"<br/>");
+				out.println(petO.getQq()+"<br/>");
+			} 
+	}
  %>

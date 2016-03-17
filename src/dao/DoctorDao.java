@@ -8,30 +8,25 @@ import java.util.ArrayList;
 
 import util.DBHelper;
 import entity.Doctor;
+import entity.Hospital;
+import entity.PetOwner;
 
 
 public class DoctorDao {
+	//注册时添加到医生表的方法
 	public boolean addDoctorInfo(Doctor doc) throws Exception {
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		conn = DBHelper.getConnection();
-		String sql = "INSERT INTO tq_doctors (docName,docSex,docAge,docPass,docTel,docQQ,docEmail)VALUES(?,?,?,?,?,?,?) ";
-		String name = doc.getName();
-		String pass = doc.getPass();
-		String sex = doc.getSex();
-		int age = doc.getAge();
-		String tel = doc.getTel();
-		String qq = doc.getQQ();
-		String email = doc.getEmail();
+		DBHelper db = new DBHelper();
+		Connection conn = db.getConnection();
+		String sql = "INSERT INTO tq_doctors (docName,docPass,docSex,docAge,docTel,docEmail,docQQ)VALUES(?,?,?,?,?,?,?) ";	
 		try{
-			stmt = conn.prepareStatement(sql);
-			stmt.setString(1,name);
-			stmt.setString(2,sex);
-			stmt.setInt(3,age);
-			stmt.setString(4,pass);
-			stmt.setString(5,tel);
-			stmt.setString(6, qq);
-			stmt.setString(7, email);
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1,doc.getName());
+			stmt.setString(2,doc.getPass());
+			stmt.setString(3,doc.getSex());
+			stmt.setInt(4,(int)doc.getAge());
+			stmt.setString(5,doc.getTel());
+			stmt.setString(6, doc.getEmail());
+			stmt.setString(7, doc.getQq());
 			int j = stmt.executeUpdate();
 			if(j==1){
 				return true;
@@ -43,62 +38,56 @@ public class DoctorDao {
 		}finally{
 			conn.close();
 		}
-		
 	}
-	
-	public ArrayList<Doctor> getAllDoctor(){
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		ArrayList<Doctor> list = new ArrayList<Doctor>();//医生列表集合
-		try
-		{
-			conn = DBHelper.getConnection();
-			String sql = "select * from tq_doctors";
-			stmt = conn.prepareStatement(sql);
-			rs = stmt.executeQuery();
-			while(rs.next())
-			{
-				Doctor doc = new Doctor();
-				doc.setName(rs.getString("docName"));
-				doc.setSex(rs.getString("docSex"));
-				doc.setAge(rs.getInt("docAge"));
-				doc.setPass(rs.getString("docPass"));
-				doc.setTel(rs.getString("docTel"));
-				doc.setQQ(rs.getString("docQQ"));
-				list.add(doc);//把一个医生信息加入集合
+	//添加到医院表
+	public boolean addHospitalInfo(Hospital hos) throws Exception {
+		DBHelper db = new DBHelper();
+		Connection conn = db.getConnection();
+		String sql = "INSERT INTO tq_hospital (hs_name,hs_password,hs_tel,hs_email)VALUES(?,?,?,?) ";
+		try{
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, hos.getName());
+			stmt.setString(2, hos.getPass());
+			stmt.setString(3, hos.getTel());
+			stmt.setString(4, hos.getEmail());
+			int j = stmt.executeUpdate();
+			if(j==1){
+				return true;
+			}else{
+				return false;
 			}
-			return list;//返回一个集合
-		}catch(Exception ex)
-		{
-			ex.printStackTrace();
-			return null;
-		}finally 
-		{
-			//释放数据集对象
-			if(rs!=null)
-			{
-				try
-				{
-					rs.close();
-					rs = null;
-				}catch(Exception ex)
-				{
-					ex.printStackTrace();
-				}
-			}
-			//释放语句对象
-			if(stmt!=null)
-			{
-				try
-				{
-					stmt.close();
-					stmt = null;
-				}catch(Exception ex)
-				{
-					ex.printStackTrace();
-				}
-			}
+		}catch(Exception ex){
+			return false;
+		}finally{
+			conn.close();
 		}
 	}
+	//添加到宠物主人表
+	public boolean addPetOwnerInfo(PetOwner po) throws Exception {
+		DBHelper db = new DBHelper();
+		Connection conn = db.getConnection();
+		String sql = "INSERT INTO tq_pet_owner (po_name,po_password,po_sex,po_age,po_tel,po_qq,po_email)VALUES(?,?,?,?,?,?,?) ";
+		
+		try{
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, po.getName());
+			stmt.setString(2, po.getPass());
+			stmt.setString(3, po.getSex());
+			stmt.setInt(4, (int)po.getAge());
+			stmt.setString(5, po.getTel());
+			stmt.setString(6, po.getQq());
+			stmt.setString(7, po.getEmail());
+			int j = stmt.executeUpdate();
+			if(j==1){
+				return true;
+			}else{
+				return false;
+			}
+		}catch(Exception ex){
+			return false;
+		}finally{
+			conn.close();
+		}
+	}
+
 }

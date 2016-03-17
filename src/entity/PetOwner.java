@@ -1,6 +1,6 @@
 package entity;
 
-public class Doctor {
+public class PetOwner {
 	private String name;
 	private String pass;
 	private String sex;
@@ -8,14 +8,14 @@ public class Doctor {
 	private String tel;
 	private String email;
 	private String qq;
-	private String kind_regist;
+	/*private String kind_regist;
 	public String getKind_regist() {
 		return kind_regist;
 	}
 	public void setKind_regist(String kind_regist) {
 		this.kind_regist = kind_regist;
-	}
-	public Doctor(){}
+	}*/
+	public PetOwner(){}
 	public String getName() {
 		return name;
 	}
@@ -60,5 +60,4 @@ public class Doctor {
 	}
 
 
-	
 }

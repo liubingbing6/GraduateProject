@@ -24,6 +24,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <h1>医院首页</h1>
+    <h2>
+    	<%
+    		String hosName = (String)session.getAttribute("hospitalName");
+    	 %>
+    	 <%=hosName %>
+    </h2>
     <hr>
   </body>
 </html>

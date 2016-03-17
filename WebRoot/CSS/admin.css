@@ -16,15 +16,17 @@ body{
 	left: 32%;
 	letter-spacing: 26px;
 	font-size: 56px;
+	color: #9df8ad;
 }
 .middle {
 	overflow: hidden;
-	
 }
 .middle .left {
 	width:20%;
 	float: left;
 	padding-left: 10px;
+	height: 100%;
+	border-right: 5px solid #acb063;
 }
 .left>ul>li{
 	list-style: none;
@@ -59,7 +61,24 @@ body{
 .middle .right{
 	float:right;
 	width:78%;
-	height:500px;
-	border-left: 5px solid #acb063;
 	text-align: center;
+}
+.right table tr th,.right table tr td {
+	border: 1px solid #000;
+	width: 6em;
+	font-size: .875em;
+	padding: .5em .75em;
+}
+.right table {
+	margin:0 auto;
+	border-collapse: collapse;
+	text-align: center;
+}
+.right table caption {
+font-size: .8125em;
+font-weight: bold;
+margin-bottom: .5em;
+}
+#adminManage div{
+	display: none;
 }

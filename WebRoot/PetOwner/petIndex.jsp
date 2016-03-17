@@ -24,6 +24,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <h1>宠物主人首页</h1>
+    <h2>
+    	<%
+    		String petOwnerName = (String)session.getAttribute("petOwnerName");
+    	 %>
+    	 <%=petOwnerName %>
+    </h2>
     <hr>
   </body>
 </html>

@@ -91,11 +91,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     					</div>
     					<div id="emailDiv">
     						<label for="Email">邮&nbsp;&nbsp;箱：</label>
-    						<input class="form_common" id="Email" type="text" name="Email"/>
+    						<input class="form_common" id="Email" type="text" name="email"/>
     					</div>
     					<div id="qqDiv">
    							<label for="qq">Q&nbsp;&nbsp;&nbsp;Q：</label>
-    						<input class="form_common" id="qq" type="text" name="QQ"/>
+    						<input class="form_common" id="qq" type="text" name="qq"/>
     					</div>
     					<div id="fileDiv" style="display:none">
    							<label for="file">上传文件：</label>

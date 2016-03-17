@@ -25,6 +25,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	<%
   		String str = request.getParameter("");
+  		if(true){
+  			response.sendRedirect("../PetOwner/petIndex.jsp");
+  		}
+  		else {
+  		out.println("网址格式不正确！");
+  		}
   	 %>
   </body>
 </html>
