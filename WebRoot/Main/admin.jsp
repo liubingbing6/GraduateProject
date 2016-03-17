@@ -1,5 +1,8 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
 <%@ page import="entity.Doctor" %>
+<%@ page import="entity.Hospital" %>
+<%@ page import="entity.PetOwner" %>
+<%@ page import="entity.Pet" %>
 <jsp:useBean id="manager" class="dao.Manage"></jsp:useBean>
 <%
 String path = request.getContextPath();
@@ -76,6 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<caption>医院信息展示</caption>
     				<thead>
     					<tr>
+    						<th>注册编号</th>
     						<th>医院名称</th>
     						<th>登陆密码</th>
     						<th>医院电话</th>
@@ -83,6 +87,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     						<th colspan="2">操作</th>
     					</tr>
     				</thead>
+    				<tbody>
+ 					 <%
+	    				ArrayList<Hospital> list = manager.getAllHospital();
+	    				Hospital hos = new Hospital();
+	    				for(int i=0;i<list.size();i++){
+	    					hos = (Hospital)list.get(i);
+	    			 %>
+	    			 <tr>
+	    			 	<td><%=hos.getId() %></td>
+	    			 	<td><%=hos.getName() %></td>
+	    			 	<td><%=hos.getPass() %></td>	
+	    			 	<td><%=hos.getTel() %></td>
+	    			 	<td><%=hos.getEmail() %></td>
+	    			 	<td><a href="javascript:()">修改</a></td>
+    			 		<td><a href="deletePage?action=hospital&id=<%=hos.getId()%>" onclick="confirmDelete()">删除</a></td>
+	    			 </tr>
+	    			 <%
+	    			 	}
+	    			  %>
+    				</tbody>
     			</table>
     		</div><!-- 展示医院表信息 -->
     		<div id="docManage">
@@ -90,6 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				<caption>医生信息展示</caption>
     				<thead>
     					<tr>
+    						<th>注册编号</th>
     						<th>姓名</th>
     						<th>密码</th>
     						<th>性别</th>
@@ -102,12 +127,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				</thead>
     				<tbody>
  					 <%
-	    				ArrayList<Doctor> list = manager.getAllDoctor();
+	    				ArrayList<Doctor> list1 = manager.getAllDoctor();
 	    				Doctor doc = new Doctor();
-	    				for(int i=0;i<list.size();i++){
-	    					doc = (Doctor)list.get(i);
+	    				for(int i=0;i<list1.size();i++){
+	    					doc = (Doctor)list1.get(i);
 	    			 %>
 	    			 <tr>
+	    			 	<td><%=doc.getId() %></td>
 	    			 	<td><%=doc.getName() %></td>
 	    			 	<td><%=doc.getPass() %></td>
 	    			 	<td><%=doc.getSex() %></td>
@@ -116,7 +142,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    			 	<td><%=doc.getEmail() %></td>
 	    			 	<td><%=doc.getQq() %></td>
 	    			 	<td><a href="javascript:()">修改</a></td>
-    			 		<td><a href="javascript:()">删除</a></td>
+    			 		<td><a href="deletePage?action=doctor&id=<%=doc.getId()%>" onclick="confirmDelete()">删除</a></td>
 	    			 </tr>
 	    			 <%
 	    			 	}
@@ -130,6 +156,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<caption>宠物信息展示</caption>
     				<thead>
     					<tr>
+    						<th>注册编号</th>
     						<th>宠物名字</th>
     						<th>宠物性别</th>
     						<th>宠物年龄</th>
@@ -138,6 +165,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     						<th colspan="2">操作</th>
     					</tr>
     				</thead>
+    				<tbody>
+ 					 <%
+	    				ArrayList<Pet> list2 = manager.getAllPetInfo();
+	    				Pet pet = new Pet();
+	    				for(int i=0;i<list2.size();i++){
+	    					pet = (Pet)list2.get(i);
+	    			 %>
+	    			 <tr>
+	    			 	<td><%=pet.getId() %></td>
+	    			 	<td><%=pet.getPetName() %></td>
+	    			 	<td><%=pet.getPetSex() %></td>
+	    			 	<td><%=pet.getPetAge() %></td>
+	    			 	<td><%=pet.getPetSort() %></td>
+	    			 	<td><%=pet.getPetIllHostory() %></td>
+	    			 	<td><a href="javascript:()?id=<%=pet.getId() %>">修改</a></td>
+    			 		<td><a href="deletePage?action=pet&id=<%=pet.getId()%>" onclick="confirmDelete()">删除</a></td>
+	    			 </tr>
+	    			 <%
+	    			 	}
+	    			  %>
+    				</tbody>
+	    			
     			</table>
     		</div><!-- 展示宠物表信息 -->
     		<div id="petOwnerManage">
@@ -145,6 +194,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<caption>宠物主人信息展示</caption>
     				<thead>
     					<tr>
+    						<th>注册编号</th>
     						<th>姓名</th>
     						<th>密码</th>
     						<th>性别</th>
@@ -155,10 +205,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     						<th colspan="2">操作</th>
     					</tr>
     				</thead>
+    				<tbody>
+ 					 <%
+	    				ArrayList<PetOwner> list3 = manager.getAllPetowner();
+	    				PetOwner petO = new PetOwner();
+	    				for(int i=0;i<list3.size();i++){
+	    					petO = (PetOwner)list3.get(i);
+	    			 %>
+	    			 <tr>
+	    			 	<td><%=petO.getId() %></td>
+	    			 	<td><%=petO.getName() %></td>
+	    			 	<td><%=petO.getPass() %></td>
+	    			 	<td><%=petO.getSex() %></td>
+	    			 	<td><%=petO.getAge() %></td>
+	    			 	<td><%=petO.getTel() %></td>
+	    			 	<td><%=petO.getEmail() %></td>
+	    			 	<td><%=petO.getQq() %></td>
+	    			 	<td><a href="javascript:()">修改</a></td>
+    			 		<td><a href="deletePage?action=petOwner&id=<%=petO.getId()%>" onclick="confirmDelete()">删除</a></td>
+	    			 </tr>
+	    			 <%
+	    			 	}
+	    			  %>
+    				</tbody>
     			</table>
     		</div><!-- 展示宠物主人表信息 -->
     	</div>
     </div>
   </body>
-  <script type="text/javascript" src="JS/admin.js"></script>
+  <script type="text/javascript">
+   	<%
+    	String b = request.getParameter("status");
+  	%>
+	 if(<%=b%>){
+ 		alert("删除成功！");
+  	 }
+  
+  </script>
+  <script type="text/javascript" src="JS/admin.js" charset="gb2312"></script>
 </html>

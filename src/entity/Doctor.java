@@ -1,6 +1,7 @@
 package entity;
 
 public class Doctor {
+	private int id;
 	private String name;
 	private String pass;
 	private String sex;
@@ -9,13 +10,22 @@ public class Doctor {
 	private String email;
 	private String qq;
 	private String kind_regist;
+	public Doctor(){}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getKind_regist() {
 		return kind_regist;
 	}
 	public void setKind_regist(String kind_regist) {
 		this.kind_regist = kind_regist;
 	}
-	public Doctor(){}
 	public String getName() {
 		return name;
 	}

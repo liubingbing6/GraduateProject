@@ -39,3 +39,10 @@ function addSelectInfo(){                          //查看各类信息管理的选项卡
 		};
 	}
 }
+function confirmDelete(){
+	if(!confirm("确定要删除吗？")){
+		return false;
+	}else {
+		return true;
+	}
+}
