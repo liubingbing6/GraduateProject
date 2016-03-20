@@ -44,30 +44,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			</li>
     			<li>
     				<h3>医生信息管理</h3>
-    				<ul>
-    					<li><a href="javascript:()">浏览医生信息</a></li>
-    					<li><a href="javascript:()">修改医生信息</a></li>
-    					<li><a href="javascript:()">删除医生信息</a></li>
-    					<li><a href="javascript:()">增加医生信息</a></li>
-    				</ul>
     			</li>
     			<li>
     				<h3>宠物信息管理</h3>
-    				<ul>
-    					<li><a href="javascript:()">浏览宠物信息</a></li>
-    					<li><a href="javascript:()">修改宠物信息</a></li>
-    					<li><a href="javascript:()">删除宠物信息</a></li>
-    					<li><a href="javascript:()">增加宠物信息</a></li>
-    				</ul>
     			</li>
     			<li>
     				<h3>宠物主人信息管理</h3>
-    				<ul>
-    					<li><a href="javascript:()">浏览主人信息</a></li>
-    					<li><a href="javascript:()">修改主人信息</a></li>
-    					<li><a href="javascript:()">删除主人信息</a></li>
-    					<li><a href="javascript:()">增加主人信息</a></li>
-    				</ul>
     			</li>
     		</ul>
     	</div>
