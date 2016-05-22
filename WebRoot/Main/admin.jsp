@@ -8,7 +8,10 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%
+    	String b = request.getParameter("status");
+    	String modStatus = request.getParameter("modStaus");
+%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -28,7 +31,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <div class="top">
     	<img alt="" src="Image/admin_bg.jpg" width="100%" height="160px">
-    	<h1>宠物管理系统</h1>
+    	<h1>宠物管理系统</h1> 
+    	<input type="text" id="b" value=<%=b %> disabled style="visibility:hidden;">
+    	<input type="text" id="modStatus" value=<%=modStatus %> disabled style="visibility:hidden;">
     </div>
     <div class="middle" id="middle">
     	<div class="left">
@@ -82,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    			 	<td><%=hos.getPass() %></td>	
 	    			 	<td><%=hos.getTel() %></td>
 	    			 	<td><%=hos.getEmail() %></td>
-	    			 	<td><a href="javascript:()">修改</a></td>
+	    			 	<td><a href="Main/modify.jsp?action=hospital&id=<%=hos.getId()%>">修改</a></td>
     			 		<td><a href="deletePage?action=hospital&id=<%=hos.getId()%>" onclick="confirmDelete()">删除</a></td>
 	    			 </tr>
 	    			 <%
@@ -123,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    			 	<td><%=doc.getTel() %></td>
 	    			 	<td><%=doc.getEmail() %></td>
 	    			 	<td><%=doc.getQq() %></td>
-	    			 	<td><a href="javascript:()">修改</a></td>
+	    			 	<td><a href="Main/modify.jsp?action=doctor&id=<%=doc.getId()%>">修改</a></td>
     			 		<td><a href="deletePage?action=doctor&id=<%=doc.getId()%>" onclick="confirmDelete()">删除</a></td>
 	    			 </tr>
 	    			 <%
@@ -161,7 +166,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    			 	<td><%=pet.getPetAge() %></td>
 	    			 	<td><%=pet.getPetSort() %></td>
 	    			 	<td><%=pet.getPetIllHostory() %></td>
-	    			 	<td><a href="javascript:()?id=<%=pet.getId() %>">修改</a></td>
+	    			 	<td><a href="modifyPage?action=pet&id=<%=pet.getId()%>">修改</a></td>
     			 		<td><a href="deletePage?action=pet&id=<%=pet.getId()%>" onclick="confirmDelete()">删除</a></td>
 	    			 </tr>
 	    			 <%
@@ -203,7 +208,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    			 	<td><%=petO.getTel() %></td>
 	    			 	<td><%=petO.getEmail() %></td>
 	    			 	<td><%=petO.getQq() %></td>
-	    			 	<td><a href="javascript:()">修改</a></td>
+	    			 	<td><a href="modifyPage?action=petOwner&id=<%=petO.getId()%>">修改</a></td>
     			 		<td><a href="deletePage?action=petOwner&id=<%=petO.getId()%>" onclick="confirmDelete()">删除</a></td>
 	    			 </tr>
 	    			 <%
@@ -216,13 +221,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
   </body>
   <script type="text/javascript">
-   	<%
-    	String b = request.getParameter("status");
-  	%>
-	 if(<%=b%>){
+   	var b = document.getElementById("b");
+   	var modStatus = document.getElementById("modStatus");
+	 if(b.value && b.value == true){
  		alert("删除成功！");
+  	 }else if(b.value && b.value == false){
+  	 	alert("删除失败！");
   	 }
-  
+  	if(modStatus && modStatus == 1){
+		alert("修改成功！");  	
+  	}else if(modStatus && modStatus == '0'){
+		alert("修改失败！");  	
+  	}
   </script>
   <script type="text/javascript" src="JS/admin.js" charset="gb2312"></script>
 </html>

@@ -360,5 +360,233 @@ public class Manage {
 			}
 		}
 	}
-
+	//查询医生单条信息
+	public ArrayList<Doctor> getSingleDoctor(String dNum){
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		ArrayList<Doctor> list = new ArrayList<Doctor>();//医生列表集合
+		try
+		{
+			conn = DBHelper.getConnection();
+			String sql = "select * from tq_doctors WHERE id='"+dNum+"'";
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			while(rs.next())
+			{
+				Doctor doc = new Doctor();
+				doc.setId(rs.getInt("id"));
+				doc.setName(rs.getString("docName"));
+				doc.setSex(rs.getString("docSex"));
+				doc.setAge(rs.getInt("docAge"));
+				doc.setPass(rs.getString("docPass"));
+				doc.setTel(rs.getString("docTel"));
+				doc.setQq(rs.getString("docQQ"));
+				doc.setEmail(rs.getString("docEmail"));
+				list.add(doc);//把一个医生信息加入集合
+			}
+			return list;//返回一个集合
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return null;
+		}finally 
+		{
+			//释放数据集对象
+			if(rs!=null)
+			{
+				try
+				{
+					rs.close();
+					rs = null;
+				}catch(Exception ex)
+				{
+					ex.printStackTrace();
+				}
+			}
+			//释放语句对象
+			if(stmt!=null)
+			{
+				try
+				{
+					stmt.close();
+					stmt = null;
+				}catch(Exception ex)
+				{
+					ex.printStackTrace();
+				}
+			}
+		}
+	}
+	//查询单个医院信息列表
+	public ArrayList<Hospital> getSingleHospital(String hNum){
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		ArrayList<Hospital> list = new ArrayList<Hospital>();//医院列表集合
+		try
+		{
+			conn = DBHelper.getConnection();
+			String sql = "select * from tq_hospital WHERE id='"+hNum+"'";
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			while(rs.next())
+			{
+				Hospital hs = new Hospital();
+				hs.setId(rs.getInt("id"));
+				hs.setName(rs.getString("hs_name"));
+				hs.setPass(rs.getString("hs_password"));
+				hs.setTel(rs.getString("hs_tel"));
+				hs.setEmail(rs.getString("hs_email"));
+				list.add(hs);//把一个医院信息加入集合
+			}
+			return list;//返回一个集合
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return null;
+		}finally 
+		{
+			//释放数据集对象
+			if(rs!=null)
+			{
+				try
+				{
+					rs.close();
+					rs = null;
+				}catch(Exception ex)
+				{
+					ex.printStackTrace();
+				}
+			}
+			//释放语句对象
+			if(stmt!=null)
+			{
+				try
+				{
+					stmt.close();
+					stmt = null;
+				}catch(Exception ex)
+				{
+					ex.printStackTrace();
+				}
+			}
+		}
+		
+	}
+	//查询宠物主人单条信息
+	public ArrayList<PetOwner> getSinglePetowner(String poNum){
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		ArrayList<PetOwner> list = new ArrayList<PetOwner>();//宠物主人信息列表集合
+		try
+		{
+			conn = DBHelper.getConnection();
+			String sql = "select * from tq_pet_owner WHERE id='"+poNum+"'";
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			while(rs.next())
+			{
+				PetOwner petO = new PetOwner();
+				petO.setId(rs.getInt("id"));
+				petO.setName(rs.getString("po_name"));
+				petO.setPass(rs.getString("po_password"));
+				petO.setSex(rs.getString("po_sex"));
+				petO.setAge(rs.getInt("po_age"));
+				petO.setTel(rs.getString("po_tel"));
+				petO.setQq(rs.getString("po_qq"));
+				petO.setEmail(rs.getString("po_email"));
+				list.add(petO);//把一个宠物主人信息加入集合
+			}
+			return list;//返回一个集合
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return null;
+		}finally 
+		{
+			//释放数据集对象
+			if(rs!=null)
+			{
+				try
+				{
+					rs.close();
+					rs = null;
+				}catch(Exception ex)
+				{
+					ex.printStackTrace();
+				}
+			}
+			//释放语句对象
+			if(stmt!=null)
+			{
+				try
+				{
+					stmt.close();
+					stmt = null;
+				}catch(Exception ex)
+				{
+					ex.printStackTrace();
+				}
+			}
+		}
+	}
+	//查询宠物单条信息
+	public ArrayList<Pet> getSinglePetInfo(String petNum){
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		ArrayList<Pet> list = new ArrayList<Pet>();//宠物信息列表集合
+		try
+		{
+			conn = DBHelper.getConnection();
+			String sql = "select * from tq_pet WHERE id='"+petNum+"'";
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			while(rs.next())
+			{
+				Pet pet = new Pet();
+				pet.setId(rs.getInt("id"));
+				pet.setPetName(rs.getString("pet_name"));
+				pet.setPetSex(rs.getString("pet_sex"));
+				pet.setPetAge(rs.getInt("pet_age"));
+				pet.setPetSort(rs.getString("pet_sort"));
+				pet.setPetIllHostory(rs.getString("pet_ill_history"));
+				list.add(pet);//把一个宠物信息加入集合
+			}
+			return list;//返回一个集合
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return null;
+		}finally 
+		{
+			//释放数据集对象
+			if(rs!=null)
+			{
+				try
+				{
+					rs.close();
+					rs = null;
+				}catch(Exception ex)
+				{
+					ex.printStackTrace();
+				}
+			}
+			//释放语句对象
+			if(stmt!=null)
+			{
+				try
+				{
+					stmt.close();
+					stmt = null;
+				}catch(Exception ex)
+				{
+					ex.printStackTrace();
+				}
+			}
+		}
+	}
+	//
 }

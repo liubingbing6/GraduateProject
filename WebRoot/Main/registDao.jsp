@@ -19,10 +19,12 @@
 	//对注册进行处理
 	request.setCharacterEncoding("utf8");
 	String kind_regist = request.getParameter("kind_regist");
+	String hosName = request.getParameter("name");
 	//out.println(docDao.addDoctorInfo(doctor));
 	if(kind_regist.equals("doctor")){
 		if(fnDao.addDoctorInfo(doctor)){
-			session.setAttribute("doctorName",doctor.getName());
+			//session.setAttribute("doctorName",doctor.getName());
+			session.setAttribute("hospitalName", hosName);
 			response.sendRedirect("../Doctors/docIndex.jsp");	
 		}else{
 			out.println("<h2>医生记录添加失败！</h2>");
@@ -36,7 +38,8 @@
 		} 	
 	}else if(kind_regist.equals("hospital")){
 			if(fnDao.addHospitalInfo(hospital)){
-				session.setAttribute("hospitalName", hospital.getName());
+				//session.setAttribute("hospitalName", hospital.getName());
+				session.setAttribute("hospitalName", hosName);				
 				response.sendRedirect("../Hospital/hosIndex.jsp");
 			}else{
 				out.println("<h2>医院记录添加失败！</h2>");

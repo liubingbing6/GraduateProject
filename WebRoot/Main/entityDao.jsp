@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	request.setCharacterEncoding("utf8");
 	String name = new String(users.getUserName().getBytes("ISO-8859-1"),"UTF-8");
 	String kind = request.getParameter("kind");
-	if(name!=""||name!=null){
+	if(name!="" || name!=null){
 		if(useDao.login(users)){
 			 if(kind.equals("admin")){
 				response.sendRedirect("admin.jsp");	
@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				response.sendRedirect("../PetOwner/petInex.jsp");
 			}	
 		}else{
-			//out.println("对不起，您还没有注册！请先注册！");
+			//out.println("对不起，您还没有注册！请先注册！"+kind+useDao.login(users));
 			response.sendRedirect("err404.jsp");
 		}
 	}

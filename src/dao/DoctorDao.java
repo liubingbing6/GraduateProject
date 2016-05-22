@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 
@@ -89,5 +90,75 @@ public class DoctorDao {
 			conn.close();
 		}
 	}
-
+	//更新医院表
+		public boolean updateHospital(Hospital hos) throws Exception {
+			DBHelper db = new DBHelper();
+			Connection conn = db.getConnection();
+			String sql = "UPDATE tq_hospital SET hs_name='"+hos.getName()+"',hs_password='"+hos.getPass()+"',hs_tel='"+hos.getTel()+"',hs_email="+hos.getEmail()+" WHERE id="+hos.getId()+"";
+			try{
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				int j = stmt.executeUpdate();
+				if(j==1){
+					return true;
+					//System.out.println("true");
+				}else{
+					return false;
+					//System.out.println("false");
+				}
+			}catch(Exception ex){
+				System.out.println("错误为:" + ex);
+				return false;
+			}finally{
+				conn.close();
+			}
+		}
+		
+		//更新医生表
+		public boolean updateDoctor(Doctor doc) throws Exception {
+			DBHelper db = new DBHelper();
+			Connection conn = db.getConnection();
+			String sql = "UPDATE tq_doctors SET docName='"+doc.getName()+"',docPass="+doc.getPass()+",docSex='"+doc.getSex()+"',docAge="+doc.getAge()+",docTel="+doc.getTel()+",docEmail="+doc.getEmail()+",docQQ="+doc.getQq()+" WHERE id="+doc.getId()+"";
+	
+			try{
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				int j = stmt.executeUpdate();
+				if(j==1){
+					return true;
+					//System.out.println("true");
+				}else{
+					return false;
+					//System.out.println("false");
+				}
+			}catch(Exception ex){
+				System.out.println("错误为:" + ex);
+				return false;
+			}finally{
+				conn.close();
+			}
+		}
+		
+		//更新宠物主人表
+		public boolean updatePetOwner(PetOwner po) throws Exception {
+			DBHelper db = new DBHelper();
+			Connection conn = db.getConnection();
+			String sql = "UPDATE tq_pet_owner SET po_name='"+po.getName()+"',po_password="+po.getPass()+",po_sex='"+po.getSex()+"',po_age="+po.getAge()+",po_tel="+po.getTel()+",po_qq="+po.getQq()+",po_email="+po.getEmail()+" WHERE id="+po.getId()+"";
+	
+			try{
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				int j = stmt.executeUpdate();
+				if(j==1){
+					return true;
+					//System.out.println("true");
+				}else{
+					return false;
+					//System.out.println("false");
+				}
+			}catch(Exception ex){
+				System.out.println("错误为:" + ex);
+				return false;
+			}finally{
+				conn.close();
+			}
+		}
+		//
 }

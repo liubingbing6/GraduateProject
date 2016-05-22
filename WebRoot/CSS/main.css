@@ -334,6 +334,7 @@ body {
 	display: inline-block;
 	font-size: 20px;
 	margin-left:48px;
+	width:20px;
 }
 .red {
 	color: #C00;
